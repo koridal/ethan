@@ -34,15 +34,18 @@ menuItems.forEach(item => {
 // Searches Chats
 const searchMessage = () => {
   const val = messageSearch.value.toLowerCase();
-  message.forEach(user => {
-    let name = user.querySelector('h5').textContent.toLowerCase();
+  message.forEach(chat => {
+    let name = chat.querySelector('h5').textContent.toLowerCase();
     if(name.indexOf(val) != -1) {
-      user.style.display = 'flex';
+      chat.style.display = 'flex';
     } else {
-      user.style.display ='none';
+      chat.style.display ='none';
     }
   })
 }
+
+// Search chat
+messageSearch.addEventListener('keyup', searchMessage);
 
 // Highlight Messages Card When Messages Menu Item is Clicked
 messagesNotification.addEventListener('click', () => {
