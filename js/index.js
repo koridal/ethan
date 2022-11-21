@@ -7,6 +7,11 @@ const messages = document.querySelector('.messages');
 const message = messages.querySelectorAll('.message');
 const messageSearch = document.querySelector('#message-search');
 
+// Theme
+const theme = document.querySelector('#theme');
+const themeModal = document.querySelector('.customize-theme');
+const fontSizes = document.querySelectorAll('.choose-size span');
+
 // ==================== SideBar ====================
 
 // Remove Active class from all menu items
@@ -55,4 +60,42 @@ messagesNotification.addEventListener('click', () => {
     messages.style.boxShadow = 'none';
   }, 2000);
  })
- 
+
+// Theme/Dispaly Customization
+
+// opens modal
+const openThemeModal = () => {
+  themeModal.style.display = 'grid';
+}
+
+// closes modal
+const closeThemeModal = (e) => {
+  if(e.target.classList.contains('customize-theme')) {
+    themeModal.style.display = 'none';
+  }
+}
+
+// close modal
+themeModal.addEventListener('click', closeThemeModal);
+
+theme.addEventListener('click', openThemeModal);
+
+// ==================== Fonts ====================
+fontSizes.forEach(size => {
+  let fontSize;
+
+  if(size.classList.contains('font-size-1')) {
+    fontSize = '10px';
+  } else if(size.classList.contains('font-size-2')) {
+    fontSize = '12px';
+  } else if(size.classList.contains('font-size-3')) {
+    fontSize = '14px';
+  } else if(size.classList.contains('font-size-4')) {
+    fontSize = '16px';
+  } else if(size.classList.contains('font-size-5')) {
+    fontSize = '20px';
+  }
+
+  // change font size of the root html element
+  document.querySelector('html').style.fontSize = fontSize;
+})
